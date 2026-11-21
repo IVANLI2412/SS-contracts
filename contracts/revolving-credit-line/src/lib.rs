@@ -212,7 +212,8 @@ impl RevolvingCreditLine {
         save_line(&env, &draw.issuer, &line);
         save_draw(&env, &invoice_id, &draw);
         let topics = (Symbol::new(&env, "repaid"), draw.issuer, invoice_id);
-        env.events().publish(topics, (principal_paid, interest_paid));
+        env.events()
+            .publish(topics, (principal_paid, interest_paid));
         Ok(())
     }
 
